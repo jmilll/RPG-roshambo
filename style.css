@@ -1,0 +1,134 @@
+:root {
+    --double-size: 6px;
+    --width: 75%;
+}
+
+html {
+    background-color: transparent;
+    font-family: 'Source Code Pro', monospace;
+}
+ 
+/*#container {
+    display: flex;
+    border: 10px solid green;
+    min-height: 75vh;
+    width: 75%;
+    justify-content: space-between;
+    flex-direction: column;
+} */
+#container {
+    margin: 50px auto;
+    display: grid;
+    border: 10px solid green;
+    height: 50%;
+    width: var(--width);
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+        "csb  csb  . comp"
+        "csb  csb cf comp"
+        "user uf  cf   ."
+        "user uf  usb usb"
+        "ta   ta  ta  ta"
+        "ta   ta  ta  ta";
+        /* csb = computer scoreboard // comp = computer avatar // user = user avatar // uf = user fight choice // cf = computer fight choice // usb = user scoreboard // ta = text area */
+}
+
+p {
+    font-family: inherit;
+}
+
+button {
+    font-family: inherit;
+    text-transform: uppercase;
+}
+
+#starter {
+    position: absolute;
+    height: 75%;
+    width: calc(var(--width) - 10px);
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0,.98);
+    display: grid;
+    place-items: center center;
+}
+
+#ko {
+    position: absolute;
+    height: 60%;
+    width: calc(var(--width) - 10px);
+    margin: 0 -10px 0 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: grid;
+    place-items: center center;
+}
+
+#text-area {
+    display: grid;
+    border: black var(--double-size) double;
+    grid-area: ta;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#player-selection {
+    display:flex;
+    border: black var(--double-size) double;
+    flex-direction: column;
+    margin: calc(var(--double-size)*(-1));
+    grid-row: 1 / span 1;
+    grid-column: 2 / -1;
+}
+
+#round-result {
+    align-self: center;
+    justify-self: center;
+    grid-row: 2 / -1;
+    grid-column: 1 / -1;
+    padding: 15px;
+}
+#user-score-balls {
+    margin: 10px;
+    border-bottom: 3px solid blue;
+    border-right: 3px solid blue;
+    grid-area: usb;
+    align-self: center;
+    
+}
+
+#cpu-score-balls {
+    margin: 10px;
+    border-bottom: 3px solid blue;
+    border-left: 3px solid blue;
+    grid-area: csb;
+    align-self: center;
+}
+
+.ball {
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 2px solid gray;
+    display: inline-block;
+}
+
+.win-round {
+    background-color: green;
+}
+
+
+/*
+.body {
+    
+    height: 360px;
+    width: 400px;
+    background: url(https://i.ytimg.com/vi/KjEMd6Q4mOw/hqdefault.jpg);
+    background-color: white;
+    background-size: cover;
+    border: double;
+    margin: 10% auto;
+}
+*/
