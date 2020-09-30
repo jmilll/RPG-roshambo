@@ -1,27 +1,38 @@
 :root {
     --double-size: 6px;
     --width: 75%;
+    --vh: 100%vh;
 }
 
 html {
     background-color: transparent;
     font-family: 'Source Code Pro', monospace;
+    /*font-family: 'Aldrich', sans-serif;*/
 }
- 
-/*#container {
-    display: flex;
-    border: 10px solid green;
-    min-height: 75vh;
-    width: 75%;
-    justify-content: space-between;
-    flex-direction: column;
-} */
+
+p {
+    font-family: inherit;
+}
+
+button {
+    font-family: inherit;
+    text-transform: uppercase;
+}
+body {
+    height: 100%;
+}
+
 #container {
+    position: relative;
     margin: 50px auto;
     display: grid;
-    border: 10px solid green;
-    height: 50%;
+    border: 10px solid black;
+    border-radius: 4px;
+    padding: 10px;
     width: var(--width);
+    height: 75%;
+    max-width: 700px;
+    max-height: 90%;
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-template-areas: 
@@ -34,13 +45,53 @@ html {
         /* csb = computer scoreboard // comp = computer avatar // user = user avatar // uf = user fight choice // cf = computer fight choice // usb = user scoreboard // ta = text area */
 }
 
-p {
-    font-family: inherit;
+#user-fighter {
+    border: 2px solid pink;
+    grid-area: uf;
 }
 
-button {
-    font-family: inherit;
-    text-transform: uppercase;
+#computer-fighter {
+    border: 2px solid pink;
+    grid-area: cf;
+}
+
+#user-avatar {
+    border: 2px solid purple;
+    grid-area: user;
+    background: url('../RPG-roshambo/assets/sprite.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+#computer-avatar {
+    border: 2px solid purple;
+    grid-area: comp;
+    background: url('../RPG-roshambo/assets/cpu.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rock {
+    background: url('../RPG-roshambo/assets/rock.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.paper {
+    background: url('../RPG-roshambo/assets/paper.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.scissors {
+    background: url('../RPG-roshambo/assets/scissors.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #starter {
@@ -56,30 +107,94 @@ button {
 
 #ko {
     position: absolute;
-    height: 60%;
-    width: calc(var(--width) - 10px);
-    margin: 0 -10px 0 0;
-    padding: 0;
+    height: 100%;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.9);
     display: grid;
     place-items: center center;
 }
 
+#play-again {
+    position: absolute;
+    background-color: lightgray;
+    display: inline-block;
+    border: solid black;
+    width: auto;
+    text-align: center;
+    padding: .4rem 2rem;
+    border-radius: 4px;
+}
+
+#play-again:active {
+    transform: translateY(3px);
+}
+
 #text-area {
     display: grid;
-    border: black var(--double-size) double;
+    border: var(--double-size) double #000;
     grid-area: ta;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(2, 1fr);
+    border-radius: 4px;
+}
+
+#score {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    align-self: center;
+    justify-self: center;
+    padding: 15px;
 }
 
 #player-selection {
-    display:flex;
-    border: black var(--double-size) double;
+    border: var(--double-size) #000;
+    border-style: none none double double;
     flex-direction: column;
-    margin: calc(var(--double-size)*(-1));
+    /*margin: calc(var(--double-size)*(-1));*/
     grid-row: 1 / span 1;
     grid-column: 2 / -1;
+    border-radius: 4px;
+}
+
+.btn {
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    background-color: transparent;
+    display: block;
+    border: none;
+    text-align: left;
+    padding: .2rem 2rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.btn:active, .btn:focus, .btn.active {
+    outline: none;
+    outline-offset: -2px;
+}
+
+.btn:hover:before {
+    position: absolute;
+    border-color: transparent black;
+	border-style: solid;
+	border-width: 6px 0px 6px 6px;
+	height: 0px;
+    width: 0px;
+    content: "";
+    margin: 4px 0 0 -15px;
+    transition: 0.5s;
+}
+
+.btn:focus:after {
+    position: absolute;
+    border-color: transparent rgba(0, 0, 0, 0.5);
+	border-style: solid;
+	border-width: 6px 6px 6px 0px;
+	height: 0px;
+    width: 0px;
+    content: "";
+    margin: 4px 0 0 7px;
 }
 
 #round-result {
@@ -91,44 +206,38 @@ button {
 }
 #user-score-balls {
     margin: 10px;
-    border-bottom: 3px solid blue;
-    border-right: 3px solid blue;
+    border-bottom: 3px solid #000;
+    border-right: 3px solid #000;
     grid-area: usb;
     align-self: center;
-    
+    border-radius: 4px;
+
+    display: flex;
+    justify-content: space-evenly;
 }
 
 #cpu-score-balls {
     margin: 10px;
-    border-bottom: 3px solid blue;
-    border-left: 3px solid blue;
+    border-bottom: 3px solid #000;
+    border-left: 3px solid #000;
     grid-area: csb;
     align-self: center;
+    border-radius: 4px;
+
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .ball {
-    height: 15px;
-    width: 15px;
+    height: 1rem;
+    width: 1rem;
     background-color: transparent;
     border-radius: 50%;
-    border: 2px solid gray;
+    border: 2px solid rgba(124, 124, 124, 0.5);
     display: inline-block;
+    margin-bottom: .2rem;
 }
 
 .win-round {
-    background-color: green;
+    background-color: rgba(51, 161, 0, 0.75);
 }
-
-
-/*
-.body {
-    
-    height: 360px;
-    width: 400px;
-    background: url(https://i.ytimg.com/vi/KjEMd6Q4mOw/hqdefault.jpg);
-    background-color: white;
-    background-size: cover;
-    border: double;
-    margin: 10% auto;
-}
-*/

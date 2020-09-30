@@ -1,7 +1,7 @@
 const playButton = document.getElementById('play-button');
 const container = document.getElementById('container');
 const playerContainer = document.getElementById('player-selection');
-const playerfighter = document.getElementById('player-fighter');
+const userfighter = document.getElementById('user-fighter');
 const computerContainer = document.getElementById('computer-selection');
 const computerfighter = document.getElementById('computer-fighter');
 const starterDiv = document.getElementById('starter');
@@ -14,7 +14,7 @@ const roundResult = document.getElementById('round-result');
 
 const activeButton = document.querySelectorAll('.active-button');
 
-const winningScore = 5;
+const winningScore = 2;
 
 let playerScore = 0;
 let compScore = 0;
@@ -24,7 +24,7 @@ function reset() {
     playerScore = 0;
     compScore = 0;
     roundScore = 0;
-    scoreboard.textContent = (`Score: ${playerScore} to ${compScore} // Round: ${roundScore}`);
+    scoreboard.textContent = (`Score: ${playerScore} to ${compScore} Round: ${roundScore}`);
     roundResult.textContent = '';
     for (let i = 0; i <= (userBalls.length - 1); i++) {
         userBalls[i].setAttribute('class', 'ball user-ball');
@@ -41,20 +41,20 @@ function computerPlay() {
 function round(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     roundScore++;
-    return(`No way! It is a TIE! Your ${playerSelection} high-five's its fellow ${computerSelection} brethren`);
+    return(`It\'s a tie! Your ${playerSelection}\'s high-five!`);
   } else if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
       (playerSelection == 'paper' && computerSelection == 'rock') ||
       (playerSelection == 'scissors' && computerSelection == 'paper')) {
         playerScore++;
         roundScore++;
         userBalls[(playerScore - 1)].setAttribute('class', 'ball user-ball win-round');
-        return(`You WIN this round! ${playerSelection} beats ${computerSelection}`);
+        return(`You win this round, ${playerSelection} beats ${computerSelection}!`);
         
   } else {
     compScore++;
     roundScore++;
     cpuBalls[(compScore - 1)].setAttribute('class', 'ball cpu-ball win-round');
-    return(`Computer wins this round! ${computerSelection} beats ${playerSelection}`);;
+    return(`You lose this round, ${computerSelection} beats ${playerSelection}!`);;
   }
 }
 
@@ -81,7 +81,11 @@ function rematch() {
         reset();
         x.remove();
         y.remove();
+        userfighter.setAttribute('class', '');
+        computerfighter.setAttribute('class', '');
+        roundResult.textContent = 'COMPUTER wants to fight! Select an attack.';
     });
+
 }
 
 function checkGameOver() {    
@@ -119,8 +123,7 @@ function testRound() {
         console.log(round(playerSelection, computerSelection));
         console.log(`Score: ${playerScore} to ${compScore} // Round: ${roundScore}`);
 */
-
-
+/*     */
 
 activeButton.forEach(activeButton => activeButton.addEventListener('click', (e) => {
     if (button = e.target.matches("#rock")) {
@@ -128,7 +131,10 @@ activeButton.forEach(activeButton => activeButton.addEventListener('click', (e) 
         let computerSelection = computerPlay();
         roundResult.textContent = (round(playerSelection, computerSelection));
         console.log(`Score: ${playerScore} to ${compScore} // Round: ${roundScore}`);
-        scoreboard.textContent = (`Score: ${playerScore} to ${compScore} // Round: ${roundScore}`);
+        scoreboard.textContent = (`Score: ${playerScore} to ${compScore} Round: ${roundScore}`);
+        
+        computerfighter.setAttribute('class', `${computerSelection}`);
+        userfighter.setAttribute('class', 'rock');
 
         checkGameOver();
 
@@ -137,7 +143,10 @@ activeButton.forEach(activeButton => activeButton.addEventListener('click', (e) 
         let computerSelection = computerPlay();
         roundResult.textContent = (round(playerSelection, computerSelection));
         console.log(`Score: ${playerScore} to ${compScore} // Round: ${roundScore}`);
-        scoreboard.textContent = (`Score: ${playerScore} to ${compScore} // Round: ${roundScore}`);
+        scoreboard.textContent = (`Score: ${playerScore} to ${compScore} Round: ${roundScore}`);
+
+        computerfighter.setAttribute('class', `${computerSelection}`);
+        userfighter.setAttribute('class', 'paper');
 
         checkGameOver();
     } else if (button = e.target.matches("#scissors")) {
@@ -145,7 +154,10 @@ activeButton.forEach(activeButton => activeButton.addEventListener('click', (e) 
         let computerSelection = computerPlay();
         roundResult.textContent = (round(playerSelection, computerSelection));
         console.log(`Score: ${playerScore} to ${compScore} // Round: ${roundScore}`);
-        scoreboard.textContent = (`Score: ${playerScore} to ${compScore} // Round: ${roundScore}`);
+        scoreboard.textContent = (`Score: ${playerScore} to ${compScore} Round: ${roundScore}`);
+
+        userfighter.setAttribute('class', 'scissors');
+        computerfighter.setAttribute('class', `${computerSelection}`);
 
         checkGameOver();
     }
