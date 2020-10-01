@@ -14,7 +14,7 @@ const roundResult = document.getElementById('round-result');
 
 const activeButton = document.querySelectorAll('.active-button');
 
-const winningScore = 2;
+const winningScore = 5;
 
 let playerScore = 0;
 let compScore = 0;
@@ -41,20 +41,20 @@ function computerPlay() {
 function round(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     roundScore++;
-    return(`It\'s a tie! Your ${playerSelection}\'s high-five!`);
+    return(`There was NO EFFECT! The ${playerSelection}\'s high-five!`);
   } else if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
       (playerSelection == 'paper' && computerSelection == 'rock') ||
       (playerSelection == 'scissors' && computerSelection == 'paper')) {
         playerScore++;
         roundScore++;
         userBalls[(playerScore - 1)].setAttribute('class', 'ball user-ball win-round');
-        return(`You win this round, ${playerSelection} beats ${computerSelection}!`);
+        return(`It was SUPER EFFECTIVE, ${playerSelection} beats ${computerSelection}!`);
         
   } else {
     compScore++;
     roundScore++;
     cpuBalls[(compScore - 1)].setAttribute('class', 'ball cpu-ball win-round');
-    return(`You lose this round, ${computerSelection} beats ${playerSelection}!`);;
+    return(`Ouch... CRITICAL HIT, ${computerSelection} beats ${playerSelection}!`);;
   }
 }
 
@@ -67,8 +67,13 @@ function knockOut() {
     newButton.setAttribute('id', 'play-again');
     newButton.textContent = 'Play Again';
 
+    const newText = document.createElement('p');
+    newText.setAttribute('class', 'post-game');
+    newText.textContent = 'Straight testin';
+
     container.appendChild(newDiv);
     newDiv.appendChild(newButton);
+    newDiv.appendChild(newText);
 
 
     //againButton.addEventListener('click', () => {starterDiv.remove()});
@@ -90,12 +95,12 @@ function rematch() {
 
 function checkGameOver() {    
     if (playerScore === winningScore) {
-        roundResult.textContent = 'the match is yours';
+        roundResult.textContent = 'The match is yours';
         knockOut();
         rematch();
         //activeButton.forEach(activeButton => activeButton.classList.remove('active-button'));
     } else if (compScore === winningScore) {
-        roundResult.textContent = 'you\'ve been defeated, you white out';
+        roundResult.textContent = 'You\'ve been defeated, you white out';
         knockOut();
         rematch();
         //activeButton.forEach(activeButton => activeButton.classList.remove('active-button'));

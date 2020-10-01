@@ -37,58 +37,66 @@ body {
     grid-template-rows: repeat(6, 1fr);
     grid-template-areas: 
         "csb  csb  . comp"
-        "csb  csb cf comp"
+        ".  uf cf comp"
         "user uf  cf   ."
         "user uf  usb usb"
         "ta   ta  ta  ta"
         "ta   ta  ta  ta";
         /* csb = computer scoreboard // comp = computer avatar // user = user avatar // uf = user fight choice // cf = computer fight choice // usb = user scoreboard // ta = text area */
+    column-gap: 5px;
 }
 
+/*
+grid-template-areas: 
+"csb  csb  . comp"
+"csb  csb cf comp"
+"user uf  cf   ."
+"user uf  usb usb"
+"ta   ta  ta  ta"
+"ta   ta  ta  ta";
+*/
 #user-fighter {
-    border: 2px solid pink;
     grid-area: uf;
+    margin: 25px 15px 25px 15px;
 }
 
 #computer-fighter {
-    border: 2px solid pink;
     grid-area: cf;
+    margin: 0 10px 20px 10px;
 }
 
 #user-avatar {
-    border: 2px solid purple;
     grid-area: user;
-    background: url('../RPG-roshambo/assets/sprite.png');
+    background: url('../RPG-roshambo/assets/user-pixel.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
 }
 
 #computer-avatar {
-    border: 2px solid purple;
     grid-area: comp;
-    background: url('../RPG-roshambo/assets/cpu.png');
+    background: url('../RPG-roshambo/assets/cpu-pixel.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .rock {
-    background: url('../RPG-roshambo/assets/rock.png');
+    background: url('../RPG-roshambo/assets/rock-pixel.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .paper {
-    background: url('../RPG-roshambo/assets/paper.png');
+    background: url('../RPG-roshambo/assets/paper-pixel.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .scissors {
-    background: url('../RPG-roshambo/assets/scissors.png');
+    background: url('../RPG-roshambo/assets/scissors-pixel.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -112,6 +120,16 @@ body {
     background-color: rgba(255, 255, 255, 0.9);
     display: grid;
     place-items: center center;
+}
+
+.post-game {
+    position: absolute;
+    font-family: inherit;
+    width: auto;
+    text-align: center;
+    color: black;
+    margin-bottom: 25%;
+    
 }
 
 #play-again {
