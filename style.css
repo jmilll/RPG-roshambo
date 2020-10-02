@@ -62,7 +62,7 @@ grid-template-areas:
 
 #computer-fighter {
     grid-area: cf;
-    margin: 0 10px 20px 10px;
+    margin: 0 15px 20px 15px;
 }
 
 #user-avatar {
@@ -103,22 +103,53 @@ grid-template-areas:
 }
 
 #starter {
+    height: 100%;
+    width: 100%;
     position: absolute;
-    height: 75%;
-    width: calc(var(--width) - 10px);
-    margin: 0;
-    padding: 0;
-    background-color: rgba(0, 0, 0,.98);
     display: grid;
+    background-color: rgba(0, 0, 0, 0.98);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(6, 1fr);
     place-items: center center;
 }
 
-#ko {
+#play-button {
     position: absolute;
+    background-color: rgb(240, 240, 240);
+    display: inline-block;
+    border: solid white;
+    width: auto;
+    text-align: center;
+    padding: .4rem 2rem;
+    border-radius: 4px;
+    grid-row: 4 / span 1;
+    grid-column: 2 / span 1;
+}
+
+#play-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px -9px rgba(128,128,128,1);
+    transition: .2s;
+}
+
+#play-button:active {
+    transform: translateY(3px);
+}
+
+.splash-p {
+    color: white;
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 1;
+}
+
+#ko {
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
     display: grid;
+    background-color: rgba(255, 255, 255, 0.98);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(6, 1fr);
     place-items: center center;
 }
 
@@ -128,8 +159,31 @@ grid-template-areas:
     width: auto;
     text-align: center;
     color: black;
-    margin-bottom: 25%;
-    
+    grid-row: 4 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.trophy {
+    height: 85%;
+    width: 45%;
+    margin-top: 25%;
+    position: absolute;
+    background: url('../RPG-roshambo/assets/trophy2-pixel.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    grid-row: 1 / span 3;
+    grid-column: 2 / span 1;
+}
+
+.sad {
+    height: 100%;
+    width: 90%;
+    position: absolute;
+    background: url('../RPG-roshambo/assets/sad-pixel.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    grid-row: 2;
+    grid-column: 2 / span 1;
 }
 
 #play-again {
@@ -141,10 +195,18 @@ grid-template-areas:
     text-align: center;
     padding: .4rem 2rem;
     border-radius: 4px;
+    grid-row: 5 / span 1;
+    grid-column: 2 / span 1;
 }
 
 #play-again:active {
     transform: translateY(3px);
+}
+
+#play-again:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px -9px rgba(128,128,128,1);
+    transition: .2s;
 }
 
 #text-area {
@@ -177,7 +239,7 @@ grid-template-areas:
 .btn {
     font-size: 16px;
     font-weight: 600;
-    position: relative;
+  /*  position: relative; */
     background-color: transparent;
     display: block;
     border: none;
@@ -190,6 +252,12 @@ grid-template-areas:
 .btn:active, .btn:focus, .btn.active {
     outline: none;
     outline-offset: -2px;
+}
+
+.active-button:hover {
+    transform: translateX(3px);
+    text-shadow: 0px 5px 15px -9px rgba(128,128,128,1);
+    transition: .2s;
 }
 
 .btn:hover:before {

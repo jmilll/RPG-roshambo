@@ -69,16 +69,45 @@ function knockOut() {
 
     const newText = document.createElement('p');
     newText.setAttribute('class', 'post-game');
-    newText.textContent = 'Straight testin';
+    newText.textContent = 'You\'ve been defeated, you get sad...';
+
+    const newSad = document.createElement('div');
+    newSad.setAttribute('class', 'sad');
 
     container.appendChild(newDiv);
+    newDiv.appendChild(newSad);
     newDiv.appendChild(newButton);
     newDiv.appendChild(newText);
 
 
     //againButton.addEventListener('click', () => {starterDiv.remove()});
 }
+// same as knockout, but different results for winning
+function winner() {
+    const newDiv = document.createElement('div');
+    newDiv.setAttribute('id', 'ko');
 
+    const newButton = document.createElement('button');
+    newButton.setAttribute('class', 'btn');
+    newButton.setAttribute('id', 'play-again');
+    newButton.textContent = 'Play Again';
+
+    const newText = document.createElement('p');
+    newText.setAttribute('class', 'post-game');
+    //change what it says when win
+    newText.textContent = 'Hey, you won! You gained 12,000EXP points! You got $1500, sent some home to mom.';
+
+    const newTrophy = document.createElement('div');
+    newTrophy.setAttribute('class', 'trophy');
+
+    container.appendChild(newDiv);
+    newDiv.appendChild(newTrophy);
+    newDiv.appendChild(newButton);
+    newDiv.appendChild(newText);
+
+
+    //againButton.addEventListener('click', () => {starterDiv.remove()});
+}
 function rematch() {
     const x = document.getElementById('play-again');
     const y = document.getElementById('ko');
@@ -96,7 +125,7 @@ function rematch() {
 function checkGameOver() {    
     if (playerScore === winningScore) {
         roundResult.textContent = 'The match is yours';
-        knockOut();
+        winner();
         rematch();
         //activeButton.forEach(activeButton => activeButton.classList.remove('active-button'));
     } else if (compScore === winningScore) {
