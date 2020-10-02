@@ -6,6 +6,8 @@ First to win 5 rounds takes the trophy!
 
 [Play](https://jmilll.github.io/RPG-roshambo/)
 
+(I'm planning on formating to work on different devices)
+
 ## Example
 
 ![RPG-roshambo example](assets/demo.png)
