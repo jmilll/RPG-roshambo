@@ -4,11 +4,13 @@ Taking the game of Roshambo (rock/paper/scissors) to the next level, with inspir
 
 First to win 5 rounds takes the trophy!
 
+[Play](https://jmilll.github.io/RPG-roshambo/)
+
 ## Example
-[Check it out in action](https://jmilll.github.io/RPG-roshambo/)
 
 ![RPG-roshambo example](assets/demo.png)
 
+[Check it out in action](https://jmilll.github.io/RPG-roshambo/)
 
 ## Motivation
 
@@ -31,8 +33,8 @@ The purpose of this project was to learn and understand Javascript events and ma
 
 ## Acknowledgements
 
-This project was inspired by [The Odin Project](https://www.theodinproject.com/home) online learning curriculum.
-This project was also inspired by a late 90's battle adventure game where you tried to collect 'em all, then battle to be the very best, like no one ever was.
+* This project was inspired by [The Odin Project](https://www.theodinproject.com/home) online learning curriculum.
+* This project was also inspired by a late 90's battle adventure game where you tried to collect 'em all, then battle to be the very best, like no one ever was.
 
 ## License
 
